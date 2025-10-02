@@ -3,8 +3,15 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { profileData } from "@/data/profile";
+import { experiences } from "@/data/experiences";
+import { projects } from "@/data/projects";
+import { resumePath } from "@/data/navigation";
 
 const Home = () => {
+  // Show first 2 experiences and projects on home page
+  const featuredExperiences = experiences.slice(0, 2);
+  const featuredProjects = projects.slice(0, 2);
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Hero Section with Bio */}
@@ -12,18 +19,24 @@ const Home = () => {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-muted shadow-large flex items-center justify-center overflow-hidden">
-              <div className="text-6xl text-muted-foreground">👤</div>
+              {profileData.headshotUrl ? (
+                <img 
+                  src={profileData.headshotUrl} 
+                  alt={profileData.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="text-6xl text-muted-foreground">👤</div>
+              )}
             </div>
             
             <div className="flex-1 text-center md:text-left">
-              <h1 className="mb-4">Your Name</h1>
+              <h1 className="mb-4">{profileData.name}</h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-6">
-                Software Engineer | Full Stack Developer
+                {profileData.title}
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-8">
-                Passionate developer with expertise in building scalable web applications. 
-                I love solving complex problems and creating intuitive user experiences. 
-                Currently focused on React, TypeScript, and modern web technologies.
+                {profileData.bio}
               </p>
               <div className="flex gap-4 justify-center md:justify-start">
                 <Button asChild className="bg-primary hover:bg-primary/90">
@@ -32,7 +45,7 @@ const Home = () => {
                   </Link>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a href="/resume.pdf" download>
+                  <a href={resumePath} download>
                     Download Resume
                   </a>
                 </Button>
@@ -55,21 +68,16 @@ const Home = () => {
           </div>
           
           <div className="space-y-6">
-            <ExperienceCard
-              title="Senior Software Engineer"
-              company="Tech Company Inc."
-              period="2022 - Present"
-              description="Leading development of cloud-based solutions and mentoring junior developers. Implemented microservices architecture that improved system performance by 40%."
-              skills={["React", "TypeScript", "Node.js", "AWS"]}
-            />
-            
-            <ExperienceCard
-              title="Full Stack Developer"
-              company="StartUp XYZ"
-              period="2020 - 2022"
-              description="Built and maintained multiple client-facing applications. Collaborated with design team to create intuitive user interfaces."
-              skills={["Vue.js", "Python", "PostgreSQL", "Docker"]}
-            />
+            {featuredExperiences.map((experience, index) => (
+              <ExperienceCard
+                key={index}
+                title={experience.title}
+                company={experience.company}
+                period={experience.period}
+                description={experience.description}
+                skills={experience.skills}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -87,21 +95,16 @@ const Home = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <ProjectCard
-              title="E-Commerce Platform"
-              description="A full-featured online shopping platform with payment integration, user authentication, and real-time inventory management."
-              technologies={["React", "Node.js", "MongoDB", "Stripe"]}
-              githubUrl="https://github.com"
-              liveUrl="https://example.com"
-            />
-            
-            <ProjectCard
-              title="Task Management App"
-              description="Collaborative task management tool with real-time updates, team chat, and productivity analytics."
-              technologies={["TypeScript", "Next.js", "Supabase", "TailwindCSS"]}
-              githubUrl="https://github.com"
-              liveUrl="https://example.com"
-            />
+            {featuredProjects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                description={project.description}
+                technologies={project.technologies}
+                githubUrl={project.githubUrl}
+                liveUrl={project.liveUrl}
+              />
+            ))}
           </div>
         </div>
       </section>

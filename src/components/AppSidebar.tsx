@@ -1,5 +1,6 @@
-import { Home, Briefcase, FolderGit2, FileText, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { navigationItems, resumePath } from "@/data/navigation";
 
 import {
   Sidebar,
@@ -13,13 +14,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-const items = [
-  { title: "Home", url: "/", icon: Home },
-  { title: "Experiences", url: "/experiences", icon: Briefcase },
-  { title: "Projects", url: "/projects", icon: FolderGit2 },
-  { title: "Blog", url: "/blog", icon: FileText },
-];
-
 export function AppSidebar() {
   const { open } = useSidebar();
 
@@ -32,7 +26,7 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {navigationItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink
@@ -56,7 +50,7 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <a
-                    href="/resume.pdf"
+                    href={resumePath}
                     download
                     className="flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors text-sidebar-foreground hover:bg-sidebar-accent/50"
                   >
