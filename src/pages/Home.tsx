@@ -13,12 +13,12 @@ const Home = () => {
   const featuredExperiences = experiences.slice(0, 2);
   const featuredProjects = projects.slice(0, 2);
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-background">
       {/* Hero Section with Bio */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-muted shadow-large flex items-center justify-center overflow-hidden">
+          <div className="flex flex-col md:flex-row items-start gap-12">
+            <div className="w-32 h-32 md:w-40 md:h-40 flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden border border-border">
               {profileData.headshotUrl ? (
                 <img 
                   src={profileData.headshotUrl} 
@@ -26,29 +26,25 @@ const Home = () => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="text-6xl text-muted-foreground">👤</div>
+                <div className="text-4xl text-muted-foreground">👤</div>
               )}
             </div>
             
-            <div className="flex-1 text-center md:text-left">
-              <h1 className="mb-4">{profileData.name}</h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-6">
+            <div className="flex-1">
+              <h1 className="mb-2">{profileData.name}</h1>
+              <p className="text-lg text-muted-foreground mb-6">
                 {profileData.title}
               </p>
-              <p className="text-lg text-foreground leading-relaxed mb-8">
+              <p className="text-base text-foreground leading-relaxed mb-6">
                 {profileData.bio}
               </p>
-              <div className="flex gap-4 justify-center md:justify-start">
-                <Button asChild className="bg-primary hover:bg-primary/90">
-                  <Link to="/projects">
-                    View Projects <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a href={resumePath} download>
-                    Download Resume
-                  </a>
-                </Button>
+              <div className="flex gap-4">
+                <Link to="/projects" className="underline">
+                  View Projects
+                </Link>
+                <a href={resumePath} download className="underline">
+                  Download Resume
+                </a>
               </div>
             </div>
           </div>
@@ -56,18 +52,16 @@ const Home = () => {
       </section>
 
       {/* Experiences Section */}
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-16 border-t border-border">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h2>Experience</h2>
-            <Button variant="ghost" asChild>
-              <Link to="/experiences">
-                View All <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Link to="/experiences" className="text-sm underline">
+              View All
+            </Link>
           </div>
           
-          <div className="space-y-6">
+          <div>
             {featuredExperiences.map((experience, index) => (
               <ExperienceCard
                 key={index}
@@ -83,18 +77,16 @@ const Home = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="container mx-auto px-4 py-16 pb-24">
+      <section className="container mx-auto px-4 py-16 pb-24 border-t border-border">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h2>Featured Projects</h2>
-            <Button variant="ghost" asChild>
-              <Link to="/projects">
-                View All <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Link to="/projects" className="text-sm underline">
+              View All
+            </Link>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div>
             {featuredProjects.map((project, index) => (
               <ProjectCard
                 key={index}
