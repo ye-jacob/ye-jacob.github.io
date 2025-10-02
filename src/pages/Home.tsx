@@ -1,7 +1,5 @@
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { ProjectCard } from "@/components/ProjectCard";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { profileData } from "@/data/profile";
 import { experiences } from "@/data/experiences";
