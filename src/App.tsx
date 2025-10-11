@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { ThemeProvider } from "next-themes";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import Home from "./pages/Home";
 import Experiences from "./pages/Experiences";
 import Projects from "./pages/Projects";
@@ -15,17 +17,19 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <SidebarProvider defaultOpen={true}>
-          <div className="flex min-h-screen w-full">
-            <AppSidebar />
-            <div className="flex-1">
-              <header className="sticky top-0 z-40 h-14 flex items-center border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
-                <SidebarTrigger />
-              </header>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <SidebarProvider defaultOpen={true}>
+            <div className="flex min-h-screen w-full">
+              <AppSidebar />
+              <div className="flex-1">
+                <header className="sticky top-0 z-40 h-14 flex items-center justify-between border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
+                  <SidebarTrigger />
+                  <ThemeToggle />
+                </header>
               <main>
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -40,6 +44,7 @@ const App = () => (
         </SidebarProvider>
       </BrowserRouter>
     </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
