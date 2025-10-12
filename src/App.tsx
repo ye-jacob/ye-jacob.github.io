@@ -1,8 +1,9 @@
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ThemeProvider } from "next-themes";
@@ -19,13 +20,23 @@ const queryClient = new QueryClient();
 
 const App = () => {
   console.log("App component rendering");
+  
+  // Handle GitHub Pages SPA redirect
+  React.useEffect(() => {
+    const redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redirect && redirect !== location.href) {
+      history.replaceState(null, '', redirect);
+    }
+  }, []);
+  
   return (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <HashRouter>
+        <BrowserRouter>
           <SidebarProvider defaultOpen={true}>
             <div className="flex min-h-screen w-full">
               <AppSidebar />
@@ -48,7 +59,7 @@ const App = () => {
             </div>
           </div>
         </SidebarProvider>
-      </HashRouter>
+      </BrowserRouter>
     </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
