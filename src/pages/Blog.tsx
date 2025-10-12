@@ -1,4 +1,5 @@
 import { blogPosts } from "@/data/blog-posts";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   return (
@@ -12,9 +13,15 @@ const Blog = () => {
           
           <div>
             {blogPosts.map((post, index) => (
-              <div key={index} className="border-b border-border pb-6 mb-6">
+              <Link 
+                key={index} 
+                to={`/blog/${post.slug}`}
+                className="block border-b border-border pb-6 mb-6 hover:bg-accent/5 -mx-4 px-4 py-2 rounded-lg transition-colors"
+              >
                 <div className="text-sm text-muted-foreground mb-2">{post.date}</div>
-                <h3 className="text-2xl font-semibold mb-3">{post.title}</h3>
+                <h3 className="text-2xl font-semibold mb-3 hover:text-primary transition-colors">
+                  {post.title}
+                </h3>
                 <p className="text-foreground leading-relaxed mb-3">{post.excerpt}</p>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
@@ -23,7 +30,7 @@ const Blog = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
