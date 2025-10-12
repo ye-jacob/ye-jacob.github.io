@@ -6,8 +6,8 @@ export interface ProfileData {
 }
 
 export const profileData: ProfileData = {
-  name: "Your Name",
-  title: "Software Engineer | Full Stack Developer",
-  bio: "Passionate developer with expertise in building scalable web applications. I love solving complex problems and creating intuitive user experiences. Currently focused on React, TypeScript, and modern web technologies.",
+  name: "Jacob Ye",
+  title: "Senior at Cornell University | Studying Economics, Finance, and Computer Science",
+  bio: "My creative, professional, and self-improvement journey.",
   headshotUrl: "/IMG_6049.jpg",
 };
