@@ -16,7 +16,7 @@ const Home = () => {
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row items-start gap-12">
-            <div className="w-32 h-32 md:w-40 md:h-40 flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden border border-border">
+            <div className="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden border border-border rounded-lg">
               {profileData.headshotUrl ? (
                 <img 
                   src={profileData.headshotUrl} 
