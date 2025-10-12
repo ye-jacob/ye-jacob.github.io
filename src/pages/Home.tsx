@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { profileData } from "@/data/profile";
 import { experiences } from "@/data/experiences";
 import { projects } from "@/data/projects";
-import { resumePath } from "@/data/navigation";
+
 
 const Home = () => {
   // Show first 2 experiences and projects on home page
@@ -40,9 +40,9 @@ const Home = () => {
                 <Link to="/projects" className="underline">
                   View Projects
                 </Link>
-                <a href={resumePath} download className="underline">
-                  Download Resume
-                </a>
+                <Link to="/resume" className="underline">
+                  View Resume
+                </Link>
               </div>
             </div>
           </div>

@@ -1,6 +1,5 @@
-import { Download } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { navigationItems, resumePath } from "@/data/navigation";
+import { navigationItems } from "@/data/navigation";
 
 import {
   Sidebar,
@@ -46,19 +45,6 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-              
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <a
-                    href={resumePath}
-                    download
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors text-sidebar-foreground hover:bg-sidebar-accent/50"
-                  >
-                    <Download className="h-5 w-5" />
-                    {open && <span>Resume</span>}
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
