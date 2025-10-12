@@ -15,8 +15,8 @@ const Home = () => {
       {/* Hero Section with Bio */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start gap-12">
-            <div className="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden border border-border rounded-lg">
+          <div className="flex flex-col md:flex-row-reverse items-start gap-12">
+            <div className="w-64 h-64 md:w-96 md:h-96 flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden border border-border rounded-lg">
               {profileData.headshotUrl ? (
                 <img 
                   src={profileData.headshotUrl} 
