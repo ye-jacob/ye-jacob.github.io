@@ -4,10 +4,16 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      // GitHub Pages SPA redirect - captures the requested path and redirects to index.html
-      sessionStorage.redirect = location.href;
+      // GitHub Pages SPA redirect for React Router
+      var pathSegments = location.pathname.slice(1).split('/');
+      location.replace(
+        location.protocol + '//' + 
+        location.hostname + 
+        (location.port ? ':' + location.port : '') +
+        '/#/' +
+        pathSegments.join('/')
+      );
     </script>
-    <meta http-equiv="refresh" content="0;URL='/'">
   </head>
   <body>
   </body>
