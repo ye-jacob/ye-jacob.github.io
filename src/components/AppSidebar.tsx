@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { navigationItems } from "@/data/navigation";
+import { profile } from "@/data";
 
 import {
   Sidebar,
@@ -21,7 +22,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-sidebar-foreground font-semibold text-base px-4 py-4">
-            Portfolio
+            {profile.name}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

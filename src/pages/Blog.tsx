@@ -1,4 +1,4 @@
-import { blogPosts } from "@/data/blog-posts";
+import { blogPosts } from "@/data";
 import { Link } from "react-router-dom";
 
 const Blog = () => {

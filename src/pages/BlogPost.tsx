@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { blogPosts } from "@/data/blog-posts";
-import { Button } from "@/components/ui/button";
+import { blogPosts } from "@/data";
 import { ArrowLeft } from "lucide-react";
 
 const BlogPost = () => {
@@ -13,11 +12,9 @@ const BlogPost = () => {
         <section className="container mx-auto px-4 py-16">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="mb-4">Blog post not found</h1>
-            <Link to="/blog">
-              <Button variant="outline">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Blog
-              </Button>
+            <Link to="/blog" className="inline-flex items-center text-sm underline mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Blog
             </Link>
           </div>
         </section>
@@ -29,11 +26,9 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background">
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
-          <Link to="/blog">
-            <Button variant="ghost" className="mb-8">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Blog
-            </Button>
+          <Link to="/blog" className="inline-flex items-center text-sm underline mb-8">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Blog
           </Link>
           
           <article>
