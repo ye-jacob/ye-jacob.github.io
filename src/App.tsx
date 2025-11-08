@@ -5,7 +5,6 @@ import { ThemeProvider } from "next-themes";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Experiences from "./pages/Experiences";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Resume from "./pages/Resume";
@@ -27,7 +26,6 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/projects" element={<Projects />} />
-                  <Route path="/experiences" element={<Experiences />} />
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="/resume" element={<Resume />} />

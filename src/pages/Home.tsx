@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { profile, experiences, projects } from "@/data";
+import { profile, projects } from "@/data";
 
 const Home = () => {
-  const featuredExperiences = experiences.slice(0, 2);
   const featuredProjects = projects.slice(0, 2);
 
   return (
@@ -10,9 +9,19 @@ const Home = () => {
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row-reverse items-start gap-12 mb-16">
-            <div className="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden border border-border rounded-lg">
+            <div className="w-72 h-72 md:w-[28rem] md:h-[28rem] flex-shrink-0 bg-muted flex items-center justify-center overflow-hidden border border-border rounded-lg shadow-lg">
               {profile.headshotUrl ? (
-                <img src={profile.headshotUrl} alt={profile.name} className="w-full h-full object-cover" />
+                <img 
+                  src={profile.headshotUrl} 
+                  alt={profile.name} 
+                  className="w-full h-full object-cover scale-100"
+                  style={{
+                    imageRendering: '-webkit-optimize-contrast' as any,
+                  }}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="sync"
+                />
               ) : (
                 <div className="text-4xl text-muted-foreground">👤</div>
               )}
@@ -25,36 +34,6 @@ const Home = () => {
                 View Resume →
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container mx-auto px-4 py-12 border-t border-border">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-semibold">Experience</h2>
-            <Link to="/experiences" className="text-sm underline">View All</Link>
-          </div>
-          <div className="space-y-6">
-            {featuredExperiences.map((exp, i) => (
-              <div key={i} className="border-b border-border pb-6">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
-                  <div>
-                    <h3 className="text-xl font-semibold">{exp.title}</h3>
-                    <p className="text-muted-foreground mt-1">{exp.company}</p>
-                  </div>
-                  <span className="text-sm text-muted-foreground">{exp.period}</span>
-                </div>
-                <p className="text-foreground leading-relaxed mb-3">{exp.description}</p>
-                {exp.skills && exp.skills.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill) => (
-                      <span key={skill} className="text-sm text-muted-foreground">{skill}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </section>
